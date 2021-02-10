@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 
 import { colors } from "./constants/styles";
 
-import Input from './components/Input';
-import Output from './components/Output';
+import Input from './components/Input/Input';
+import Output from './components/Output/Output';
 
 function App() {
   return (
@@ -73,8 +73,9 @@ const Logo = styled("img")`
 
 const Container = styled("div")`
   text-align: center;
-  background-color: ${colors.LIGHT_BLUE};
+  background: linear-gradient(white, #DCDEFF);
   padding: 3vh 5vw;
+  height: 100%;
 `;
 
 const BodyBox = styled("div")`
