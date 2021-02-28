@@ -1,9 +1,55 @@
-#Install Dependencies
+# Install Dependencies
 install:
 
-# Run Tests
-script:
-  - echo 'Travis is not actually doing anything yet, ignore below'
-  - echo 'Testing Backend...'
-  - echo 'Installing Dependencies...'
-  - echo 'Running Test Cases...'
+# Testing -> More Testing -> Deployment 
+jobs:
+  include:
+      # TODO: backend testing
+    - stage: "Testing"
+      if: True
+      name: "Backend Tests (Python)"
+      script:
+      - python -c "print('Hi from Python!')"
+      - cd backend
+      - python -m py_compile *.py
+      - python -c "print('Backend syntax correct')"
+     #- python ./test.py 
+
+      # TODO: frontend testing
+    - stage: "Testing"
+      if: False
+      name: "Frontend Tests (JS)"
+      language: node_js
+      node_js: 12
+      script:
+      - node -e "console.log('Hi from NodeJS!')"
+      - cd frontend
+      - yarn test
+      
+      # TODO: ???
+    - stage: "Even More Testing"
+      if: False
+      name: "Other Tests"
+      script:
+      - echo "Running More Tests"
+      
+      # does not deploy because condition is false
+      # TODO: Setup AWS
+    - stage: "Deploying"
+      if: False
+      script: skip
+      deploy: 
+        if: branch = master
+        provider: s3
+        access_key_id: 
+          secure: "YOUR ENCRYPTED AWS ACCESS KEY"
+        secret_access_key: 
+          secure: "YOUR ENCRYPTED AWS SECRET KEY"
+        bucket: "S3 Bucket"
+        skip_cleanup: true
+        
+after_success:
+  - echo 'Build Passed'
+  
+after_failure:
+  - echo 'f'
