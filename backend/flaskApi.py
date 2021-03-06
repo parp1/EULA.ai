@@ -35,7 +35,7 @@ def analyzePdf():
     # Create EULA class and run inference
     eula = inference.EULA(None, path)
     infer = inference.Inference()
-    classification = infer.getEthicalityClassifiation(eula)
+    classification = infer.getEthicalityClassification(eula)
     summary = infer.getEULASummary(eula)
     
     # Delete file

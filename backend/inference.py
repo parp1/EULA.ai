@@ -81,7 +81,7 @@ class EULA:
       return
     elif pdf == None and text == None:
       raise Exception('EULA initialization failed')
-
+    
     output_string = StringIO()
     readFile = open(pdf, 'rb')
     with readFile as in_file:
@@ -97,6 +97,6 @@ class EULA:
     self.text = processText(output_string.getvalue())
 
   def getText(self):
-    return self.text
+    return self.text[:500]
 
 
