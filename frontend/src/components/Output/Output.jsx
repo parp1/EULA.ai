@@ -22,7 +22,7 @@ class Output extends Component {
 		super(props);
 		this.state = {
 			outputState: 0 /* 0 = idle, 1 = calculating, 2 = valid response, 3 = error */,
-			error: 'Looks like something went wrong. Please try again with new EULA input.',
+			error: '',
 			classification: '',
 			summary: '',
 		};
